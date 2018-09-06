@@ -8,30 +8,50 @@ namespace FizzBuzz
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            var divisors = new Dictionary<int, string> { { 11, "Bong" }, { 3, "Fizz" }, { 5, "Buzz" }, { 7, "Bang" } };
-            for (int i = 1; i < 106; i++)
+            var allMethods = new Dictionary<int, string> { { 3, "Fizz" }, {13, "Fezz" }, { 5, "Buzz" }, { 7, "Bang" }, { 11, "Bong" } };
+            for (int i = 1; i < 301; i++)
             {
-                string returnValue = "";
-                foreach (KeyValuePair<int, string> x in divisors)
+                var returnValue = new List<string> { };
+                foreach (KeyValuePair<int, string> x in allMethods)
                 {
                     if (i % x.Key == 0)
                     {
-                        returnValue += x.Value;
+                        returnValue.Add(x.Value);
                     }
                 }
-                if (returnValue == "")
+                if (returnValue.Any() == false)
                 {
                     Console.WriteLine(i);
                 }
-                else if (returnValue.StartsWith("Bong"))
-                    {
-                       returnValue = "Bong";
-                    }
-                Console.WriteLine(returnValue);
+                else if (returnValue.Contains("Bong"))
+                    Bong(returnValue);
+                if (i % 17 == 0) {
+                    returnValue.Reverse();
+                    Console.WriteLine(String.Join("", returnValue));
+                }
+                else
+                Console.WriteLine(String.Join("", returnValue));
             }
             Console.ReadLine();
         }
+       
+        static void Bong(List<string> returnValue)
+        {
+            if (returnValue.Contains("Fezz"))
+            {
+                returnValue.Clear();
+                returnValue.Add("FezzBong");
+            }
+            else
+            {
+                returnValue.Clear();
+                returnValue.Add("Bong");
+        }
+        }
     }
 }
+
+
+
