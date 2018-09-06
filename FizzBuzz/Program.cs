@@ -10,21 +10,19 @@ namespace FizzBuzz
     {
         static void Main(string[] args)
         {
-            for (int i = 1; i < 101; i++)
+            var divisors = new Dictionary<int, string> { { 3, "Fizz" }, { 5, "Buzz" }, { 7, "Bang" } };
+            for (int i = 1; i < 106; i++)
             {
-                if (i % 15 == 0)
+                string returnValue = "";
+                foreach (KeyValuePair<int, string> x in divisors)
                 {
-                    Console.WriteLine("FizzBuzz");
+                    if (i % x.Key == 0)
+                    {
+                        returnValue += x.Value;
+                    }
                 }
-                else if (i % 3 == 0)
-                {
-                    Console.WriteLine("Fizz");
-                }
-                else if (i % 5 == 0)
-                {
-                    Console.WriteLine("Buzz");
-                }
-                else
+                Console.WriteLine(returnValue);
+                if (returnValue == "")
                 {
                     Console.WriteLine(i);
                 }
