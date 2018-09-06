@@ -10,7 +10,7 @@ namespace FizzBuzz
     {
         static void Main(string[] args)
         {
-            var divisors = new Dictionary<int, string> { { 3, "Fizz" }, { 5, "Buzz" }, { 7, "Bang" } };
+            var divisors = new Dictionary<int, string> { { 11, "Bong" }, { 3, "Fizz" }, { 5, "Buzz" }, { 7, "Bang" } };
             for (int i = 1; i < 106; i++)
             {
                 string returnValue = "";
@@ -21,11 +21,15 @@ namespace FizzBuzz
                         returnValue += x.Value;
                     }
                 }
-                Console.WriteLine(returnValue);
                 if (returnValue == "")
                 {
                     Console.WriteLine(i);
                 }
+                else if (returnValue.StartsWith("Bong"))
+                    {
+                       returnValue = "Bong";
+                    }
+                Console.WriteLine(returnValue);
             }
             Console.ReadLine();
         }
